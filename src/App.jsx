@@ -121,7 +121,7 @@ const App = () => {
   }
 
   return (
-    <div className='container mx-auto min-h-[95vh] w-[70vw] bg-white/90 dark:bg-pry-100  mt-5 max-w-md rounded-3xl mb-2'>
+    <div className='container mx-auto min-h-[95vh] w-[100vw] bg-white/90 dark:bg-pry-100  mt-5 max-w-md rounded-3xl mb-2'>
       <br />
       <ToggleBtn mode={mode} setMode={setMode} />
       <Calc arr={arr} input={input} value={value} handleClick={handleClick} />
