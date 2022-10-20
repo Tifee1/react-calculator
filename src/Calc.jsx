@@ -1,4 +1,4 @@
-const Calc = ({ arr, value, input, handleClick }) => {
+const Calc = ({ arr, value, input, handleClick, equal }) => {
   return (
     <>
       <div className='dark:text-white/90 text-pry-100 text-right px-6 pt-20 text-[25px]  w-[100%] truncate h-[117.5px]'>
@@ -31,6 +31,12 @@ const Calc = ({ arr, value, input, handleClick }) => {
               </button>
             )
           })}
+          <button
+            className='text-darkRed bg-white/90 dark:bg-pry-100 px-6 py-4 m-2 rounded-xl text-xl hover:bg-white/40 dark:hover:bg-pry-100/40 transition-all duration-[0.3s] ease-linear'
+            onClick={equal}
+          >
+            =
+          </button>
         </section>
         <div className='bg-[#474B52] h-[5px] w-[50%] mx-auto mt-5 rounded-full'></div>
       </div>
