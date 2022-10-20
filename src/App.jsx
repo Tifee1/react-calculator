@@ -8,7 +8,7 @@ const App = () => {
   const arr = [
     { value: 'AC', key: 'clear', color: 'blue' },
     { value: '±', key: 'pminus', color: 'blue' },
-    { value: '²', color: 'blue' },
+    { value: '²', color: 'blue', key: 'num' },
     { value: '÷', key: 'num', color: 'red' },
     { value: 7, key: 'num' },
     { value: 8, key: 'num' },
@@ -60,6 +60,49 @@ const App = () => {
       setInput((old) => old.slice(0, -1))
       return
     }
+
+    // characters too long
+    if (length > 14) return
+
+    // change input
+    if (key === 'num') {
+      if (value !== 0) {
+        setInput(() => value + num)
+        setValue(0)
+        return
+      }
+
+      setInput((old) => old + num)
+    }
+
+    // starting with zero
+    if (key === 'zero') {
+      if (length < 1) return
+      else {
+        setInput((old) => old + num)
+      }
+      return
+    }
+
+    // point
+    if (key === 'point') {
+      if (length < 1) {
+        setInput('0.')
+      }
+      return
+    }
+    // pminus
+    if (key === 'pminus') {
+      if (input[0] === '-') {
+        setInput((old) => `+${old.slice(1, old.length)}`)
+      } else if (input[0] === '+') {
+        setInput((old) => `-${old.slice(1, old.length)}`)
+      } else {
+        setInput((old) => `-${old}`)
+      }
+      return
+    }
+
     // submit
     if (key === 'enter') {
       if (!input) return
@@ -76,47 +119,6 @@ const App = () => {
         setValue('SYNTAX ERR')
         return
       }
-    }
-
-    // characters too long
-    if (length > 14) return
-
-    // change inputs
-
-    // starting with zero
-    if (key === 'zero') {
-      if (length < 1) return
-      else {
-        setInput((old) => old + num)
-      }
-    }
-
-    // point
-    if (key === 'point') {
-      if (length < 1) {
-        setInput('0.')
-        return
-      }
-    }
-    // pminus
-    if (key === 'pminus') {
-      if (input[0] === '-') {
-        setInput((old) => `+${old.slice(1, old.length)}`)
-      } else if (input[0] === '+') {
-        setInput((old) => `-${old.slice(1, old.length)}`)
-      } else {
-        setInput((old) => `-${old}`)
-      }
-      return
-    }
-    if (key === 'num') {
-      if (value !== 0) {
-        setInput(() => value + num)
-        setValue(0)
-        return
-      }
-
-      setInput((old) => old + num)
     }
   }
 
